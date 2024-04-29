@@ -1,0 +1,42 @@
+{
+  "name": "vite-remix",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build && vite build --ssr",
+    "dev": "NODE_ENV=development node scripts/dev.js",
+    "start": "remix-serve build/index.js",
+    "typecheck": "tsc",
+    "clean": "rm -rf build && rm -rf public/build && rm -rf node_modules/.vite"
+  },
+  "dependencies": {
+    "@remix-run/react": "^2.9.1",
+    "@remix-run/serve": "^2.9.1",
+    "dotenv": "^16.4.5",
+    "isbot": "^5.1.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "todomvc-app-css": "^2.4.3",
+    "todomvc-common": "^1.0.5"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.24.1",
+    "@remix-run/dev": "^2.9.1",
+    "@remix-run/eslint-config": "^2.9.1",
+    "@remix-run/node": "^2.9.1",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "babel-plugin-annotate-pure-calls": "^0.4.0",
+    "eslint": "^9.1.1",
+    "terser": "^5.30.4",
+    "typescript": "^5.4.5",
+    "vite": "^4.5.0",
+    "vite-plugin-babel": "^1.2.0",
+    "vite-tsconfig-paths": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
