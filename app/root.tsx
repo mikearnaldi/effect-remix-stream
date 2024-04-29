@@ -7,9 +7,6 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import "todomvc-common/base.css";
-import "todomvc-app-css/index.css";
-
 export default function App() {
   return (
     <html lang="en">
@@ -22,7 +19,6 @@ export default function App() {
       <body>
         <Outlet />
         <ScrollRestoration />
-        <LiveReload />
         <Scripts />
       </body>
     </html>

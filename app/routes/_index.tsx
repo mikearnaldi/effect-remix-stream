@@ -1,4 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+
+import "todomvc-app-css/index.css";
+import "todomvc-common/base.css";
+
+import { TodoRepo } from "~/services/TodoRepo";
+import { loaderFunction } from "~/services/index";
+import { Todo } from "../types/Todo";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,14 +18,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export interface Todo {
-  readonly id: number;
-  readonly title: string;
-  readonly createdAt: string;
-  readonly status: "COMPLETED" | "CREATED";
-}
-
-export const TodoRow = ({ todo }: { todo: Todo }) => {
+export const TodoRow = ({ todo }: { todo: Todo.Encoded }) => {
   const isCompleted = todo.status === "COMPLETED";
   return (
     <li className={isCompleted ? "completed" : ""} key={todo.id}>
@@ -48,13 +49,15 @@ export const AddTodoForm = () => {
   );
 };
 
+export const loader = loaderFunction(() => TodoRepo.getAllTodos);
+
 export default function Index() {
-  const todos: Todo[] = [];
+  const todos = useLoaderData<typeof loader>();
 
   return (
     <section className="todoapp">
       <header className="header">
-        <h1>todos</h1>
+        <h1>todos...</h1>
         <AddTodoForm />
       </header>
       <section className="main">

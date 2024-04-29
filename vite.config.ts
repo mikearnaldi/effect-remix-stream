@@ -8,8 +8,8 @@ export default defineConfig({
     babel({
       filter: new RegExp(/\.tsx?$/),
     }),
-    vitePlugin(),
     tsconfigPaths(),
+    vitePlugin(),
   ],
   build: {
     outDir: "build",
